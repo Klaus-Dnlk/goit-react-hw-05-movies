@@ -33,7 +33,7 @@ export default function SearchBar({ onSubmit }) {
           value={query}
           onChange={handleChange}
         />
-        <button type="button">
+        <button type="submit">
           <span>Search</span>
         </button>
       </form>

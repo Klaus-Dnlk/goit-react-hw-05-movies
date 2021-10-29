@@ -19,6 +19,7 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
   const location = useLocation();
+  console.log('MovieDetailsPage:', location);
   const history = useHistory();
 
   useEffect(() => {

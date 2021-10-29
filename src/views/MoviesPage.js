@@ -50,7 +50,12 @@ export default function MoviesPage() {
         {data &&
           data.map(movie => (
             <li key={movie.id}>
-              <NavLink to={`/movies/${movie.id}`}>
+              <NavLink
+                to={{
+                  pathname: `/movies/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
                 {movie.title || movie.name}
               </NavLink>
             </li>
