@@ -6,22 +6,19 @@ async function fetchWithErrorHandling(url = '', config = {}) {
   return r.ok ? await r.json() : Promise.reject(new Error('Not found'));
 }
 
-// 1. список самых популярных фильмов на сегодня для создания коллекции на главной странице
-// TRENDING TODAY
-
 export function fetchMoviesInTrend() {
   return fetchWithErrorHandling(
-    `${BASE_URL}/trending/all/day?api_key=${api_key}`,
+    `${BASE_URL}/trending/movie/day?api_key=${api_key}`,
   );
 }
 
 // 2. поиск кинофильма по ключевому слову на странице фильмов
 // SEARCH-MOVIES
 
-export function fetchMovieBySearch(query) {
+export function fetchMovieBySearch(query = '', page = 1) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/search/movie?api_key=${api_key}&query=${query}`,
-  );
+    `${BASE_URL}/search/movie?api_key=${api_key}&query=${query}&page=${page}`,
+  ).then(data => data.results);
 }
 
 // 3. запрос полной информации о фильме для страницы кинофильма
@@ -39,7 +36,7 @@ export function fetchMovieDetails(movie_id) {
 export function fetchMovieCredits(movie_id) {
   return fetchWithErrorHandling(
     `${BASE_URL}/movie/${movie_id}/credits?api_key=${api_key}`,
-  );
+  ).then(data => data.cast);
 }
 
 // 5. запрос обзоров для страницы кинофильма
@@ -48,5 +45,5 @@ export function fetchMovieCredits(movie_id) {
 export function fetchMovieReview(movie_id) {
   return fetchWithErrorHandling(
     `${BASE_URL}/movie/${movie_id}/reviews?api_key=${api_key}`,
-  );
+  ).then(data => data.results);
 }

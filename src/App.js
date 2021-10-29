@@ -11,8 +11,12 @@ const MoviesPage = lazy(() =>
   import('./views/MoviesPage'),
 ); /* webpackChunkName: "MoviesPage" */
 const NotFoundPage = lazy(() =>
-  import('./views/NotFoundPage'),
+  import('./components/NotFoundPage/NotFoundPage'),
 ); /* webpackChunkName: "NotFoundPage" */
+
+const MovieDetailsPage = lazy(() =>
+  import('./components/MovieDetailsPage/MovieDetailsPage'),
+);
 
 export default function App() {
   return (
@@ -25,8 +29,12 @@ export default function App() {
             <HomePage />
           </Route>
 
-          <Route path="/movies">
+          <Route path="/movies" exact>
             <MoviesPage />
+          </Route>
+
+          <Route path="/movies/:movieId">
+            <MovieDetailsPage />
           </Route>
 
           <Route>

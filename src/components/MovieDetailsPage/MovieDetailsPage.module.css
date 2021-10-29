@@ -1,0 +1,24 @@
+.movieDetailBox {
+  display: flex;
+}
+
+.detailBoxItem {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.additionalList {
+  margin-top: 20px;
+  margin-left: 20px;
+  border-top: 1px solid #2a363b;
+  border-bottom: 1px solid #2a363b;
+}
+
+.additionalItem {
+  margin-left: 20px;
+}
